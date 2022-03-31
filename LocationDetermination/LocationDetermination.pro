@@ -10,13 +10,16 @@ CONFIG += c++11
 
 SOURCES += \
     main.cpp \
-    mainwindow.cpp
+    mainwindow.cpp \
+    reference.cpp
 
 HEADERS += \
-    mainwindow.h
+    mainwindow.h \
+    reference.h
 
 FORMS += \
-    mainwindow.ui
+    mainwindow.ui \
+    reference.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
@@ -24,6 +27,7 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
 
 DISTFILES += \
+    images/reference.png \
     map.png \
     resultStation.svg \
     station.png

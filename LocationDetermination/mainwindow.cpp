@@ -5,22 +5,23 @@ MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
 {
+    reference = new Reference();
+
     ui->setupUi(this);
     scene= new QGraphicsScene();
     ui->graphicsView->setScene(scene);
+
     ui->xRes->clear();
     ui->yRes->clear();
 
-    QImage pictureStation(QDir::currentPath()+"/station.png");
+    QImage pictureStation(QDir::currentPath()+"/../images/station.png");
     pictureStation = pictureStation.scaled(40,40,Qt::KeepAspectRatio);
 
-
-
-    QImage pictureStationResult(QDir::currentPath()+"/resultStation.svg");
+    QImage pictureStationResult(QDir::currentPath()+"/../images/resultStation.png");
     pictureStationResult = pictureStationResult.scaled(40,40,Qt::KeepAspectRatio);
 
 
-    QImage Map(QDir::currentPath()+"/map.png");
+    QImage Map(QDir::currentPath()+"/../images/map.png");
 
     scene->addPixmap(QPixmap::fromImage(Map));
     scene->setSceneRect(0,0,Map.width(),Map.height());
@@ -73,9 +74,10 @@ bool MainWindow::interpretation(double& x0, double& y0)
 
 void MainWindow::on_pushCoordinates_clicked()
 {
+
     if( ui->latitude->text().isEmpty()||ui->longitude->text().isEmpty())
     {
-        error_message("Ошибка ввода","Не заданы некоторые параметры");
+        error_message("Input error","Some parameters are not set");
     }
     else{
         bool isOkLatitude = false;
@@ -86,7 +88,7 @@ void MainWindow::on_pushCoordinates_clicked()
 
         if(!(0 < Longitude && Longitude < 70 )|| !( 0<=Latitude && Latitude<=170 ))
         {
-                error_message("Ошибка ввода","Неправильно задана широта или долгота");
+                error_message("Input error","The latitude or longitude is set incorrectly");
         }
         else
         {
@@ -152,7 +154,7 @@ void MainWindow::on_pushCoordinates_clicked()
                 }
             }
             else{
-                   error_message("Ошибка ввода","Некорректный ввод");
+                   error_message("Input error","Incorrect input");
             }
         }
     }
@@ -165,7 +167,7 @@ void MainWindow::on_pushCoordinatesStation_clicked()
     {
         if(ui->latitude_2->text().isEmpty()||ui->longitude_2->text().isEmpty()||ui->peleng_2->text().isEmpty())
         {
-            error_message("Ошибка ввода","Не заданы некоторые параметры");
+            error_message("Input error","Some parameters are not set");
         }
         else{
            station1.y =ui->latitude_2->text().toDouble();
@@ -197,13 +199,13 @@ void MainWindow::on_pushCoordinatesStation_clicked()
                }
             }
             else{
-               error_message("Ошибка ввода","Некорректный ввод / Заданные параметры могут выходить за пределы карты");
+               error_message("Input error","Incorrect input / The specified parameters may go beyond the map");
 
             }
         }
     }
     else{
-        error_message("Ошибка ввода","Не заданы географические координаты");
+        error_message("Input error","Geographical coordinates are not set");
 
     }
 
@@ -216,7 +218,7 @@ void MainWindow::on_pushCoordinatesStation_2_clicked()
     {
         if(ui->latitude_3->text().isEmpty()||ui->longitude_3->text().isEmpty()||ui->peleng_3->text().isEmpty())
         {
-             error_message("Ошибка ввода","Не заданы некоторые параметры");
+             error_message("Input error","Some parameters are not set");
         }
             else{
             station2.y = ui->latitude_3->text().toDouble();
@@ -246,13 +248,13 @@ void MainWindow::on_pushCoordinatesStation_2_clicked()
                 }
             }
             else{
-                error_message("Ошибка ввода","Некорректный ввод / Заданные параметры могут выходить за пределы карты");
+                error_message("Input error","Incorrect input / The specified parameters may go beyond the map");
 
             }
         }
     }
     else{
-        error_message("Ошибка ввода","Не заданы географические координаты");
+        error_message("Input error","Geographical coordinates are not set");
 
     }
 }
@@ -263,7 +265,7 @@ void MainWindow::on_pushCoordinatesStation_3_clicked()
     {
         if(ui->latitude_4->text().isEmpty()||ui->longitude_4->text().isEmpty()||ui->peleng_4->text().isEmpty())
         {
-             error_message("Ошибка ввода","Не заданы некоторые параметры");
+             error_message("Input error","Some parameters are not set");
         }
         else{
             station3.y = ui->latitude_4->text().toDouble();
@@ -294,13 +296,13 @@ void MainWindow::on_pushCoordinatesStation_3_clicked()
             }
             else{
 
-                error_message("Ошибка ввода","Некорректный ввод / Заданные параметры могут выходить за пределы карты");
+                error_message("Input error","Incorrect input / The specified parameters may go beyond the map");
 
             }
         }
     }
     else{
-        error_message("Ошибка ввода","Не заданы географические координаты");
+        error_message("Input error","Geographical coordinates are not set");
 
     }
 
@@ -319,23 +321,22 @@ void MainWindow::countResult(double& Xresult,  double& Yresult,double inaccuracy
 {
 
     double Xres1,Yres1,Xres2,Yres2,Xres3,Yres3;
+
     station1.y*=coefficient;
     station2.y*=coefficient;
     station3.y*=coefficient;
-
 
     station1.peleng=((station1.peleng+inaccuracy)*M_PI)/180.0;
     station2.peleng=((station2.peleng+inaccuracy)*M_PI)/180.0;
     station3.peleng=((station3.peleng+inaccuracy)*M_PI)/180.0;
 
+
+
     double numerator1=(-station2.x*tan(station2.peleng)*(1.0/tan(station1.peleng))+station2.y*(1.0/tan(station1.peleng))-station1.y*(1.0/tan(station1.peleng))+station1.x);
     double denominator1=(1.0-tan(station2.peleng)*(1.0/tan(station1.peleng)));
 
-
     double numerator2=(-station1.x*tan(station1.peleng)*(1.0/tan(station3.peleng))+station1.y*(1.0/tan(station3.peleng))-station3.y*(1.0/tan(station3.peleng))+station3.x);
     double denominator2=(1.0-tan(station1.peleng)*(1.0/tan(station3.peleng)));
-
-
 
     double numerator3=(-station3.x*tan(station3.peleng)*(1.0/tan(station2.peleng))+station3.y*(1.0/tan(station2.peleng))-station2.y*(1.0/tan(station2.peleng))+station2.x);
     double denominator3=(1.0-tan(station3.peleng)*(1.0/tan(station2.peleng)));
@@ -351,6 +352,7 @@ void MainWindow::countResult(double& Xresult,  double& Yresult,double inaccuracy
 
          Xresult=(Xres2+Xres3)/2;
          Yresult=(Yres2+Yres3)/2;
+
 
     }
     else if (denominator2==0)
@@ -373,6 +375,7 @@ void MainWindow::countResult(double& Xresult,  double& Yresult,double inaccuracy
 
          Xresult=(Xres2+Xres1)/2;
          Yresult=(Yres2+Yres1)/2;
+
 
     }
     else{
@@ -397,7 +400,6 @@ void MainWindow::on_pushFind_clicked()
         double XresultAverage,YresultAverage=0;
 
         countResult(XresultAverage,YresultAverage,0.0);//точность
-
 
             double xOnMap=YresultAverage;
             double yOnMap=XresultAverage;
@@ -449,14 +451,15 @@ void MainWindow::on_pushFind_clicked()
                 }
             }
             else{
-                error_message("Ошибка ","Некорректные данные");
+                error_message("Error ","Incorrect data");
 
             }
+
 
     }
     else{
 
-        error_message("Ошибка ","Проверьте наличие сетки и станции");
+        error_message("Error ","Check if the grids and stations are set");
     }
 
 }
@@ -492,4 +495,13 @@ void MainWindow::on_pushDelete_clicked()
     }
 
     ui->graphicsView->update();
+}
+
+void MainWindow::on_pushButton_clicked()
+{
+    reference->show();
+    reference->setWindowTitle("Reference");
+    reference->setFixedSize(540,640);
+
+
 }

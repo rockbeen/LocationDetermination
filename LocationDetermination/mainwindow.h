@@ -7,6 +7,7 @@
 #include <cmath>
 #include <QMessageBox>
 #include <QDir>
+#include "reference.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -33,6 +34,8 @@ private slots:
 
     void on_pushDelete_clicked();
 
+    void on_pushButton_clicked();
+
 private:
     bool interpretation(double& x0, double& y0);
     void error_message(QString heading,  QString text);
@@ -40,6 +43,7 @@ private:
 
     Ui::MainWindow *ui;
     QGraphicsScene *scene;
+    Reference *reference;
 
     double Latitude;
     double Longitude;

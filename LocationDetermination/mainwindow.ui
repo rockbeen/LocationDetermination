@@ -269,8 +269,8 @@
    <widget class="QWidget" name="">
     <property name="geometry">
      <rect>
-      <x>620</x>
-      <y>487</y>
+      <x>621</x>
+      <y>488</y>
       <width>201</width>
       <height>131</height>
      </rect>
@@ -302,11 +302,22 @@
       </layout>
      </item>
      <item>
-      <widget class="QPushButton" name="pushDelete">
-       <property name="text">
-        <string>сбросить</string>
-       </property>
-      </widget>
+      <layout class="QHBoxLayout" name="horizontalLayout_8">
+       <item>
+        <widget class="QPushButton" name="pushDelete">
+         <property name="text">
+          <string>сбросить</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="pushButton">
+         <property name="text">
+          <string>справка</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
      </item>
     </layout>
    </widget>
