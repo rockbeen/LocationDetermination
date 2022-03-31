@@ -81,7 +81,9 @@ public:
     QVBoxLayout *verticalLayout_10;
     QLabel *xRes;
     QLabel *yRes;
+    QHBoxLayout *horizontalLayout_8;
     QPushButton *pushDelete;
+    QPushButton *pushButton;
     QStatusBar *statusbar;
 
     void setupUi(QMainWindow *MainWindow)
@@ -321,7 +323,7 @@ public:
 
         widget = new QWidget(centralwidget);
         widget->setObjectName(QString::fromUtf8("widget"));
-        widget->setGeometry(QRect(620, 487, 201, 131));
+        widget->setGeometry(QRect(621, 488, 201, 131));
         verticalLayout_11 = new QVBoxLayout(widget);
         verticalLayout_11->setObjectName(QString::fromUtf8("verticalLayout_11"));
         verticalLayout_11->setContentsMargins(0, 0, 0, 0);
@@ -345,10 +347,20 @@ public:
 
         verticalLayout_11->addLayout(verticalLayout_10);
 
+        horizontalLayout_8 = new QHBoxLayout();
+        horizontalLayout_8->setObjectName(QString::fromUtf8("horizontalLayout_8"));
         pushDelete = new QPushButton(widget);
         pushDelete->setObjectName(QString::fromUtf8("pushDelete"));
 
-        verticalLayout_11->addWidget(pushDelete);
+        horizontalLayout_8->addWidget(pushDelete);
+
+        pushButton = new QPushButton(widget);
+        pushButton->setObjectName(QString::fromUtf8("pushButton"));
+
+        horizontalLayout_8->addWidget(pushButton);
+
+
+        verticalLayout_11->addLayout(horizontalLayout_8);
 
         MainWindow->setCentralWidget(centralwidget);
         statusbar = new QStatusBar(MainWindow);
@@ -384,6 +396,7 @@ public:
         xRes->setText(QCoreApplication::translate("MainWindow", "TextLabel", nullptr));
         yRes->setText(QCoreApplication::translate("MainWindow", "TextLabel", nullptr));
         pushDelete->setText(QCoreApplication::translate("MainWindow", "\321\201\320\261\321\200\320\276\321\201\320\270\321\202\321\214", nullptr));
+        pushButton->setText(QCoreApplication::translate("MainWindow", "\321\201\320\277\321\200\320\260\320\262\320\272\320\260", nullptr));
     } // retranslateUi
 
 };
