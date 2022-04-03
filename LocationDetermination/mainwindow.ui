@@ -24,36 +24,16 @@
      </rect>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushFind">
-    <property name="geometry">
-     <rect>
-      <x>621</x>
-      <y>460</y>
-      <width>201</width>
-      <height>25</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>найти</string>
-    </property>
-   </widget>
    <widget class="QWidget" name="layoutWidget">
     <property name="geometry">
      <rect>
       <x>620</x>
       <y>140</y>
       <width>201</width>
-      <height>298</height>
+      <height>221</height>
      </rect>
     </property>
     <layout class="QVBoxLayout" name="verticalLayout_8">
-     <item>
-      <widget class="QLabel" name="label_5">
-       <property name="text">
-        <string>Станции:</string>
-       </property>
-      </widget>
-     </item>
      <item>
       <layout class="QVBoxLayout" name="verticalLayout_2">
        <item>
@@ -97,13 +77,6 @@
           </layout>
          </item>
         </layout>
-       </item>
-       <item>
-        <widget class="QPushButton" name="pushCoordinatesStation">
-         <property name="text">
-          <string>ok</string>
-         </property>
-        </widget>
        </item>
       </layout>
      </item>
@@ -151,13 +124,6 @@
          </item>
         </layout>
        </item>
-       <item>
-        <widget class="QPushButton" name="pushCoordinatesStation_2">
-         <property name="text">
-          <string>ok</string>
-         </property>
-        </widget>
-       </item>
       </layout>
      </item>
      <item>
@@ -203,13 +169,6 @@
           </layout>
          </item>
         </layout>
-       </item>
-       <item>
-        <widget class="QPushButton" name="pushCoordinatesStation_3">
-         <property name="text">
-          <string>ok</string>
-         </property>
-        </widget>
        </item>
       </layout>
      </item>
@@ -266,13 +225,13 @@
      </item>
     </layout>
    </widget>
-   <widget class="QWidget" name="">
+   <widget class="QWidget" name="layoutWidget">
     <property name="geometry">
      <rect>
       <x>621</x>
-      <y>488</y>
+      <y>468</y>
       <width>201</width>
-      <height>131</height>
+      <height>151</height>
      </rect>
     </property>
     <layout class="QVBoxLayout" name="verticalLayout_11">
@@ -302,6 +261,13 @@
       </layout>
      </item>
      <item>
+      <widget class="QPushButton" name="pushFind">
+       <property name="text">
+        <string>найти</string>
+       </property>
+      </widget>
+     </item>
+     <item>
       <layout class="QHBoxLayout" name="horizontalLayout_8">
        <item>
         <widget class="QPushButton" name="pushDelete">
@@ -320,6 +286,32 @@
       </layout>
      </item>
     </layout>
+   </widget>
+   <widget class="QLabel" name="label_5">
+    <property name="geometry">
+     <rect>
+      <x>620</x>
+      <y>120</y>
+      <width>444</width>
+      <height>17</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Станции:</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="pushCoordinatesStation">
+    <property name="geometry">
+     <rect>
+      <x>620</x>
+      <y>370</y>
+      <width>201</width>
+      <height>25</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>задать</string>
+    </property>
    </widget>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>

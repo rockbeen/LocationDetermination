@@ -9,7 +9,7 @@ Reference::Reference(QWidget *parent) :
     scene= new QGraphicsScene();
     ui->graphicsView->setScene(scene);
     QImage picText(QDir::currentPath()+"/../images/reference.png");
-    picText = picText.scaled(440,picText.height(),Qt::KeepAspectRatio);
+    picText = picText.scaled(590,picText.height(),Qt::KeepAspectRatio);
     scene->addPixmap(QPixmap::fromImage(picText));
 
 }

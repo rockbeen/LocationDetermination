@@ -22,7 +22,7 @@ static const uint qt_meta_data_MainWindow[] = {
        6,       // revision
        0,       // classname
        0,    0, // classinfo
-       7,   14, // methods
+       5,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -33,10 +33,8 @@ static const uint qt_meta_data_MainWindow[] = {
       12,   11,   11,   11, 0x08,
       41,   11,   11,   11, 0x08,
       77,   11,   11,   11, 0x08,
-     115,   11,   11,   11, 0x08,
-     153,   11,   11,   11, 0x08,
-     175,   11,   11,   11, 0x08,
-     199,   11,   11,   11, 0x08,
+      99,   11,   11,   11, 0x08,
+     123,   11,   11,   11, 0x08,
 
        0        // eod
 };
@@ -44,8 +42,6 @@ static const uint qt_meta_data_MainWindow[] = {
 static const char qt_meta_stringdata_MainWindow[] = {
     "MainWindow\0\0on_pushCoordinates_clicked()\0"
     "on_pushCoordinatesStation_clicked()\0"
-    "on_pushCoordinatesStation_2_clicked()\0"
-    "on_pushCoordinatesStation_3_clicked()\0"
     "on_pushFind_clicked()\0on_pushDelete_clicked()\0"
     "on_pushButton_clicked()\0"
 };
@@ -58,11 +54,9 @@ void MainWindow::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, 
         switch (_id) {
         case 0: _t->on_pushCoordinates_clicked(); break;
         case 1: _t->on_pushCoordinatesStation_clicked(); break;
-        case 2: _t->on_pushCoordinatesStation_2_clicked(); break;
-        case 3: _t->on_pushCoordinatesStation_3_clicked(); break;
-        case 4: _t->on_pushFind_clicked(); break;
-        case 5: _t->on_pushDelete_clicked(); break;
-        case 6: _t->on_pushButton_clicked(); break;
+        case 2: _t->on_pushFind_clicked(); break;
+        case 3: _t->on_pushDelete_clicked(); break;
+        case 4: _t->on_pushButton_clicked(); break;
         default: ;
         }
     }
@@ -101,9 +95,9 @@ int MainWindow::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 7)
+        if (_id < 5)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 7;
+        _id -= 5;
     }
     return _id;
 }

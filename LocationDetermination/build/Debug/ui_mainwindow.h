@@ -28,10 +28,8 @@ class Ui_MainWindow
 public:
     QWidget *centralwidget;
     QGraphicsView *graphicsView;
-    QPushButton *pushFind;
     QWidget *layoutWidget;
     QVBoxLayout *verticalLayout_8;
-    QLabel *label_5;
     QVBoxLayout *verticalLayout_2;
     QVBoxLayout *verticalLayout;
     QHBoxLayout *horizontalLayout_2;
@@ -42,7 +40,6 @@ public:
     QLineEdit *latitude_2;
     QLineEdit *longitude_2;
     QLineEdit *peleng_2;
-    QPushButton *pushCoordinatesStation;
     QVBoxLayout *verticalLayout_3;
     QVBoxLayout *verticalLayout_4;
     QHBoxLayout *horizontalLayout_3;
@@ -53,7 +50,6 @@ public:
     QLineEdit *latitude_3;
     QLineEdit *longitude_3;
     QLineEdit *peleng_3;
-    QPushButton *pushCoordinatesStation_2;
     QVBoxLayout *verticalLayout_5;
     QVBoxLayout *verticalLayout_6;
     QHBoxLayout *horizontalLayout_5;
@@ -64,7 +60,6 @@ public:
     QLineEdit *latitude_4;
     QLineEdit *longitude_4;
     QLineEdit *peleng_4;
-    QPushButton *pushCoordinatesStation_3;
     QWidget *layoutWidget1;
     QVBoxLayout *verticalLayout_9;
     QVBoxLayout *verticalLayout_7;
@@ -75,15 +70,18 @@ public:
     QLineEdit *latitude;
     QLineEdit *longitude;
     QPushButton *pushCoordinates;
-    QWidget *widget;
+    QWidget *layoutWidget2;
     QVBoxLayout *verticalLayout_11;
     QLabel *label_13;
     QVBoxLayout *verticalLayout_10;
     QLabel *xRes;
     QLabel *yRes;
+    QPushButton *pushFind;
     QHBoxLayout *horizontalLayout_8;
     QPushButton *pushDelete;
     QPushButton *pushButton;
+    QLabel *label_5;
+    QPushButton *pushCoordinatesStation;
     QStatusBar *statusbar;
 
     void setupUi(QMainWindow *MainWindow)
@@ -96,20 +94,12 @@ public:
         graphicsView = new QGraphicsView(centralwidget);
         graphicsView->setObjectName(QString::fromUtf8("graphicsView"));
         graphicsView->setGeometry(QRect(10, 20, 600, 600));
-        pushFind = new QPushButton(centralwidget);
-        pushFind->setObjectName(QString::fromUtf8("pushFind"));
-        pushFind->setGeometry(QRect(621, 460, 201, 25));
         layoutWidget = new QWidget(centralwidget);
         layoutWidget->setObjectName(QString::fromUtf8("layoutWidget"));
-        layoutWidget->setGeometry(QRect(620, 140, 201, 298));
+        layoutWidget->setGeometry(QRect(620, 140, 201, 221));
         verticalLayout_8 = new QVBoxLayout(layoutWidget);
         verticalLayout_8->setObjectName(QString::fromUtf8("verticalLayout_8"));
         verticalLayout_8->setContentsMargins(0, 0, 0, 0);
-        label_5 = new QLabel(layoutWidget);
-        label_5->setObjectName(QString::fromUtf8("label_5"));
-
-        verticalLayout_8->addWidget(label_5);
-
         verticalLayout_2 = new QVBoxLayout();
         verticalLayout_2->setObjectName(QString::fromUtf8("verticalLayout_2"));
         verticalLayout = new QVBoxLayout();
@@ -156,11 +146,6 @@ public:
 
 
         verticalLayout_2->addLayout(verticalLayout);
-
-        pushCoordinatesStation = new QPushButton(layoutWidget);
-        pushCoordinatesStation->setObjectName(QString::fromUtf8("pushCoordinatesStation"));
-
-        verticalLayout_2->addWidget(pushCoordinatesStation);
 
 
         verticalLayout_8->addLayout(verticalLayout_2);
@@ -212,11 +197,6 @@ public:
 
         verticalLayout_3->addLayout(verticalLayout_4);
 
-        pushCoordinatesStation_2 = new QPushButton(layoutWidget);
-        pushCoordinatesStation_2->setObjectName(QString::fromUtf8("pushCoordinatesStation_2"));
-
-        verticalLayout_3->addWidget(pushCoordinatesStation_2);
-
 
         verticalLayout_8->addLayout(verticalLayout_3);
 
@@ -267,11 +247,6 @@ public:
 
         verticalLayout_5->addLayout(verticalLayout_6);
 
-        pushCoordinatesStation_3 = new QPushButton(layoutWidget);
-        pushCoordinatesStation_3->setObjectName(QString::fromUtf8("pushCoordinatesStation_3"));
-
-        verticalLayout_5->addWidget(pushCoordinatesStation_3);
-
 
         verticalLayout_8->addLayout(verticalLayout_5);
 
@@ -321,25 +296,25 @@ public:
 
         verticalLayout_9->addWidget(pushCoordinates);
 
-        widget = new QWidget(centralwidget);
-        widget->setObjectName(QString::fromUtf8("widget"));
-        widget->setGeometry(QRect(621, 488, 201, 131));
-        verticalLayout_11 = new QVBoxLayout(widget);
+        layoutWidget2 = new QWidget(centralwidget);
+        layoutWidget2->setObjectName(QString::fromUtf8("layoutWidget2"));
+        layoutWidget2->setGeometry(QRect(621, 468, 201, 151));
+        verticalLayout_11 = new QVBoxLayout(layoutWidget2);
         verticalLayout_11->setObjectName(QString::fromUtf8("verticalLayout_11"));
         verticalLayout_11->setContentsMargins(0, 0, 0, 0);
-        label_13 = new QLabel(widget);
+        label_13 = new QLabel(layoutWidget2);
         label_13->setObjectName(QString::fromUtf8("label_13"));
 
         verticalLayout_11->addWidget(label_13);
 
         verticalLayout_10 = new QVBoxLayout();
         verticalLayout_10->setObjectName(QString::fromUtf8("verticalLayout_10"));
-        xRes = new QLabel(widget);
+        xRes = new QLabel(layoutWidget2);
         xRes->setObjectName(QString::fromUtf8("xRes"));
 
         verticalLayout_10->addWidget(xRes);
 
-        yRes = new QLabel(widget);
+        yRes = new QLabel(layoutWidget2);
         yRes->setObjectName(QString::fromUtf8("yRes"));
 
         verticalLayout_10->addWidget(yRes);
@@ -347,14 +322,19 @@ public:
 
         verticalLayout_11->addLayout(verticalLayout_10);
 
+        pushFind = new QPushButton(layoutWidget2);
+        pushFind->setObjectName(QString::fromUtf8("pushFind"));
+
+        verticalLayout_11->addWidget(pushFind);
+
         horizontalLayout_8 = new QHBoxLayout();
         horizontalLayout_8->setObjectName(QString::fromUtf8("horizontalLayout_8"));
-        pushDelete = new QPushButton(widget);
+        pushDelete = new QPushButton(layoutWidget2);
         pushDelete->setObjectName(QString::fromUtf8("pushDelete"));
 
         horizontalLayout_8->addWidget(pushDelete);
 
-        pushButton = new QPushButton(widget);
+        pushButton = new QPushButton(layoutWidget2);
         pushButton->setObjectName(QString::fromUtf8("pushButton"));
 
         horizontalLayout_8->addWidget(pushButton);
@@ -362,6 +342,12 @@ public:
 
         verticalLayout_11->addLayout(horizontalLayout_8);
 
+        label_5 = new QLabel(centralwidget);
+        label_5->setObjectName(QString::fromUtf8("label_5"));
+        label_5->setGeometry(QRect(620, 120, 444, 17));
+        pushCoordinatesStation = new QPushButton(centralwidget);
+        pushCoordinatesStation->setObjectName(QString::fromUtf8("pushCoordinatesStation"));
+        pushCoordinatesStation->setGeometry(QRect(620, 370, 201, 25));
         MainWindow->setCentralWidget(centralwidget);
         statusbar = new QStatusBar(MainWindow);
         statusbar->setObjectName(QString::fromUtf8("statusbar"));
@@ -375,28 +361,26 @@ public:
     void retranslateUi(QMainWindow *MainWindow)
     {
         MainWindow->setWindowTitle(QCoreApplication::translate("MainWindow", "MainWindow", nullptr));
-        pushFind->setText(QCoreApplication::translate("MainWindow", "\320\275\320\260\320\271\321\202\320\270", nullptr));
-        label_5->setText(QCoreApplication::translate("MainWindow", "\320\241\321\202\320\260\320\275\321\206\320\270\320\270:", nullptr));
         label_10->setText(QCoreApplication::translate("MainWindow", "\320\224\320\276\320\273\320\263\320\276\321\202\320\260", nullptr));
         label_3->setText(QCoreApplication::translate("MainWindow", "\320\250\320\270\321\200\320\276\321\202\320\260", nullptr));
         label_4->setText(QCoreApplication::translate("MainWindow", "\320\237\320\265\320\273\320\265\320\275\320\263", nullptr));
-        pushCoordinatesStation->setText(QCoreApplication::translate("MainWindow", "ok", nullptr));
         label_7->setText(QCoreApplication::translate("MainWindow", "\320\224\320\276\320\273\320\263\320\276\321\202\320\260", nullptr));
         label_6->setText(QCoreApplication::translate("MainWindow", "\320\250\320\270\321\200\320\276\321\202\320\260", nullptr));
         label_11->setText(QCoreApplication::translate("MainWindow", "\320\237\320\265\320\273\320\265\320\275\320\263", nullptr));
-        pushCoordinatesStation_2->setText(QCoreApplication::translate("MainWindow", "ok", nullptr));
         label_9->setText(QCoreApplication::translate("MainWindow", "\320\224\320\276\320\273\320\263\320\276\321\202\320\260", nullptr));
         label_8->setText(QCoreApplication::translate("MainWindow", "\320\250\320\270\321\200\320\276\321\202\320\260", nullptr));
         label_12->setText(QCoreApplication::translate("MainWindow", "\320\237\320\265\320\273\320\265\320\275\320\263", nullptr));
-        pushCoordinatesStation_3->setText(QCoreApplication::translate("MainWindow", "ok", nullptr));
         label_2->setText(QCoreApplication::translate("MainWindow", "\320\224\320\276\320\273\320\263\320\276\321\202\320\260", nullptr));
         label->setText(QCoreApplication::translate("MainWindow", "\320\250\320\270\321\200\320\276\321\202\320\260", nullptr));
         pushCoordinates->setText(QCoreApplication::translate("MainWindow", "\320\267\320\260\320\264\320\260\321\202\321\214", nullptr));
         label_13->setText(QCoreApplication::translate("MainWindow", "\320\240\320\265\320\267\321\203\320\273\321\214\321\202\320\260\321\202:", nullptr));
         xRes->setText(QCoreApplication::translate("MainWindow", "TextLabel", nullptr));
         yRes->setText(QCoreApplication::translate("MainWindow", "TextLabel", nullptr));
+        pushFind->setText(QCoreApplication::translate("MainWindow", "\320\275\320\260\320\271\321\202\320\270", nullptr));
         pushDelete->setText(QCoreApplication::translate("MainWindow", "\321\201\320\261\321\200\320\276\321\201\320\270\321\202\321\214", nullptr));
         pushButton->setText(QCoreApplication::translate("MainWindow", "\321\201\320\277\321\200\320\260\320\262\320\272\320\260", nullptr));
+        label_5->setText(QCoreApplication::translate("MainWindow", "\320\241\321\202\320\260\320\275\321\206\320\270\320\270:", nullptr));
+        pushCoordinatesStation->setText(QCoreApplication::translate("MainWindow", "\320\267\320\260\320\264\320\260\321\202\321\214", nullptr));
     } // retranslateUi
 
 };

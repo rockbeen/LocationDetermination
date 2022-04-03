@@ -28,10 +28,11 @@ MainWindow::MainWindow(QWidget *parent)
     ui->graphicsView->update();
 
 
-    picStation1 = new QGraphicsPixmapItem(QPixmap::fromImage(pictureStation));
-    picStation2 = new QGraphicsPixmapItem(QPixmap::fromImage(pictureStation));
-    picStation3 = new QGraphicsPixmapItem(QPixmap::fromImage(pictureStation));
+    station1.picstation = new QGraphicsPixmapItem(QPixmap::fromImage(pictureStation));
+    station2.picstation = new QGraphicsPixmapItem(QPixmap::fromImage(pictureStation));
+    station3.picstation = new QGraphicsPixmapItem(QPixmap::fromImage(pictureStation));
     picStationResult = new QGraphicsPixmapItem(QPixmap::fromImage(pictureStationResult));
+
 
     station1.ISstation=false;
     station2.ISstation=false;
@@ -161,40 +162,28 @@ void MainWindow::on_pushCoordinates_clicked()
 }
 
 
-void MainWindow::on_pushCoordinatesStation_clicked()
+void MainWindow::readData(StationXYPI& station)
 {
-    if(setGrid)
-    {
-        if(ui->latitude_2->text().isEmpty()||ui->longitude_2->text().isEmpty()||ui->peleng_2->text().isEmpty())
-        {
-            error_message("Input error","Some parameters are not set");
-        }
-        else{
-           station1.y =ui->latitude_2->text().toDouble();
-           station1.x = ui->longitude_2->text().toDouble();
 
-           station1.xOnMap=station1.y;
-           station1.yOnMap=station1.x;
+           station.xOnMap=station.y;
+           station.yOnMap=station.x;
 
-           station1.peleng = ui->peleng_2->text().toDouble();
-
-
-           if(interpretation(station1.xOnMap,station1.yOnMap)&&(station1.peleng>=0 && station1.peleng<=360))
+           if(interpretation(station.xOnMap,station.yOnMap)&&(station.peleng>=0 && station.peleng<=360))
            {
-               if(!station1.ISstation)
+               if(!station.ISstation)
                {
-                   picStation1->setPos(station1.xOnMap,station1.yOnMap);
-                   scene->addItem(picStation1);
-                   station1.ISstation=true;
+                   station.picstation->setPos(station.xOnMap,station.yOnMap);
+                   scene->addItem(station.picstation);
+                   station.ISstation=true;
 
                    ui->graphicsView->update();
 
                }
                else
                {
-                   scene->removeItem(picStation1);
-                   picStation1->setPos(station1.xOnMap,station1.yOnMap);
-                   scene->addItem(picStation1);
+                   scene->removeItem(station.picstation);
+                   station.picstation->setPos(station.xOnMap,station.yOnMap);
+                   scene->addItem(station.picstation);
                    ui->graphicsView->update();
                }
             }
@@ -202,111 +191,45 @@ void MainWindow::on_pushCoordinatesStation_clicked()
                error_message("Input error","Incorrect input / The specified parameters may go beyond the map");
 
             }
-        }
-    }
-    else{
-        error_message("Input error","Geographical coordinates are not set");
-
-    }
-
 
 }
 
-void MainWindow::on_pushCoordinatesStation_2_clicked()
+
+
+
+
+void MainWindow::on_pushCoordinatesStation_clicked()
 {
     if(setGrid)
     {
-        if(ui->latitude_3->text().isEmpty()||ui->longitude_3->text().isEmpty()||ui->peleng_3->text().isEmpty())
+        if(ui->latitude_2->text().isEmpty()||ui->longitude_2->text().isEmpty()||ui->peleng_2->text().isEmpty()||ui->latitude_3->text().isEmpty()||ui->longitude_3->text().isEmpty()
+                ||ui->peleng_3->text().isEmpty()||ui->latitude_4->text().isEmpty()||ui->longitude_4->text().isEmpty()||ui->peleng_4->text().isEmpty())
         {
-             error_message("Input error","Some parameters are not set");
-        }
-            else{
-            station2.y = ui->latitude_3->text().toDouble();
-            station2.x = ui->longitude_3->text().toDouble();
-            station2.peleng = ui->peleng_3->text().toDouble();
-
-            station2.xOnMap=station2.y;
-            station2.yOnMap=station2.x;
-
-            if(interpretation(station2.xOnMap,station2.yOnMap)&&(station2.peleng>=0&&station2.peleng<=360))
-            {
-                if(!station2.ISstation)
-                {
-                    picStation2->setPos(station2.xOnMap,station2.yOnMap);
-                    scene->addItem(picStation2);
-                    station2.ISstation=true;
-
-                    ui->graphicsView->update();
-
-                }
-                else
-                {
-                    scene->removeItem(picStation2);
-                    picStation2->setPos(station2.xOnMap,station2.yOnMap);
-                    scene->addItem(picStation2);
-                    ui->graphicsView->update();
-                }
-            }
-            else{
-                error_message("Input error","Incorrect input / The specified parameters may go beyond the map");
-
-            }
-        }
-    }
-    else{
-        error_message("Input error","Geographical coordinates are not set");
-
-    }
-}
-
-void MainWindow::on_pushCoordinatesStation_3_clicked()
-{
-    if(setGrid)
-    {
-        if(ui->latitude_4->text().isEmpty()||ui->longitude_4->text().isEmpty()||ui->peleng_4->text().isEmpty())
-        {
-             error_message("Input error","Some parameters are not set");
+            error_message("Input error","Some parameters are not set");
         }
         else{
-            station3.y = ui->latitude_4->text().toDouble();
-            station3.x = ui->longitude_4->text().toDouble();
-            station3.peleng = ui->peleng_4->text().toDouble();
 
-            station3.xOnMap=station3.y;
-            station3.yOnMap=station3.x;
+        station1.y =ui->latitude_2->text().toDouble();
+        station1.x = ui->longitude_2->text().toDouble();
+        station1.peleng = ui->peleng_2->text().toDouble();
 
-            if(interpretation(station3.xOnMap,station3.yOnMap)&&(station3.peleng>=0&&station3.peleng<=360))
-            {
-                if(!station3.ISstation)
-                {
-                    picStation3->setPos(station3.xOnMap,station3.yOnMap);
-                    scene->addItem(picStation3);
-                    station3.ISstation=true;
+        station2.y =ui->latitude_3->text().toDouble();
+        station2.x = ui->longitude_3->text().toDouble();
+        station2.peleng = ui->peleng_3->text().toDouble();
 
-                    ui->graphicsView->update();
+        station3.y =ui->latitude_4->text().toDouble();
+        station3.x = ui->longitude_4->text().toDouble();
+        station3.peleng = ui->peleng_4->text().toDouble();
 
-                }
-                else
-                {
-                    scene->removeItem(picStation3);
-                    picStation3->setPos(station3.xOnMap,station3.yOnMap);
-                    scene->addItem(picStation3);
-                    ui->graphicsView->update();
-                }
-            }
-            else{
-
-                error_message("Input error","Incorrect input / The specified parameters may go beyond the map");
-
-            }
+        readData(station1);
+        readData(station2);
+        readData(station3);
         }
     }
     else{
         error_message("Input error","Geographical coordinates are not set");
 
     }
-
-
 }
 
 
@@ -317,18 +240,19 @@ void MainWindow::error_message(QString heading,  QString text)
                            QString(text));
 }
 
-void MainWindow::countResult(double& Xresult,  double& Yresult,double inaccuracy)
+void MainWindow::countResult(double& Xresult,  double& Yresult)
 {
 
     double Xres1,Yres1,Xres2,Yres2,Xres3,Yres3;
+
 
     station1.y*=coefficient;
     station2.y*=coefficient;
     station3.y*=coefficient;
 
-    station1.peleng=((station1.peleng+inaccuracy)*M_PI)/180.0;
-    station2.peleng=((station2.peleng+inaccuracy)*M_PI)/180.0;
-    station3.peleng=((station3.peleng+inaccuracy)*M_PI)/180.0;
+    station1.peleng=((station1.peleng)*M_PI)/180.0;
+    station2.peleng=((station2.peleng)*M_PI)/180.0;
+    station3.peleng=((station3.peleng)*M_PI)/180.0;
 
 
 
@@ -397,13 +321,15 @@ void MainWindow::on_pushFind_clicked()
 {
     if(station1.ISstation && station2.ISstation && station3.ISstation && setGrid)
     {
-        double XresultAverage,YresultAverage=0;
+        on_pushCoordinatesStation_clicked();
 
-        countResult(XresultAverage,YresultAverage,0.0);//точность
+        double xOnMap,yOnMap,XresultAverage,YresultAverage=0;
 
-            double xOnMap=YresultAverage;
-            double yOnMap=XresultAverage;
-            QPen penColor(Qt::red);
+        countResult(XresultAverage,YresultAverage);//точность
+
+             xOnMap=YresultAverage;
+             yOnMap=XresultAverage;
+             QPen penColor(Qt::red);
              int sprite=20;
 
             if(interpretation(xOnMap,yOnMap))
@@ -477,19 +403,19 @@ void MainWindow::on_pushDelete_clicked()
     }
     if(station1.ISstation)
     {
-        scene->removeItem(picStation1);
+        scene->removeItem(station1.picstation);
         station1.ISstation=false;
 
     }
     if(station2.ISstation)
     {
-        scene->removeItem(picStation2);
+        scene->removeItem(station2.picstation);
         station2.ISstation=false;
 
     }
     if(station3.ISstation)
     {
-        scene->removeItem(picStation3);
+        scene->removeItem(station3.picstation);
         station3.ISstation=false;
 
     }
@@ -501,7 +427,7 @@ void MainWindow::on_pushButton_clicked()
 {
     reference->show();
     reference->setWindowTitle("Reference");
-    reference->setFixedSize(540,640);
+    reference->setFixedSize(640,640);
 
 
 }

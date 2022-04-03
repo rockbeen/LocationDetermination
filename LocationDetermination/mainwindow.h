@@ -26,10 +26,6 @@ private slots:
 
     void on_pushCoordinatesStation_clicked();
 
-    void on_pushCoordinatesStation_2_clicked();
-
-    void on_pushCoordinatesStation_3_clicked();
-
     void on_pushFind_clicked();
 
     void on_pushDelete_clicked();
@@ -37,27 +33,6 @@ private slots:
     void on_pushButton_clicked();
 
 private:
-    bool interpretation(double& x0, double& y0);
-    void error_message(QString heading,  QString text);
-    void countResult(double& Xresult,  double& Yresult,double inaccuracy);
-
-    Ui::MainWindow *ui;
-    QGraphicsScene *scene;
-    Reference *reference;
-
-    double Latitude;
-    double Longitude;
-    QGraphicsPixmapItem *picStation1;
-    QGraphicsPixmapItem *picStation2;
-    QGraphicsPixmapItem *picStation3;
-    QGraphicsPixmapItem *picStationResult;
-    QImage pictureStation;
-    QGraphicsTextItem * textWidth;
-    QGraphicsTextItem * textHeight;
-    QGraphicsLineItem *line1,*line2,*line3;
-    int sizeArrayWidth;
-    int sizeArrayHeight;
-    bool setGrid=false;
     struct StationXYPI
     {
         bool ISstation;
@@ -66,8 +41,33 @@ private:
         double xOnMap;
         double yOnMap;
         double peleng;
+        QGraphicsPixmapItem *picstation;
     };
+    bool interpretation(double& x0, double& y0);
+    void error_message(QString heading,  QString text);
+    void countResult(double& Xresult,  double& Yresult);
+    void readData(StationXYPI& station);
+
+    Ui::MainWindow *ui;
+    QGraphicsScene *scene;
+    Reference *reference;
+
+    double Latitude;
+    double Longitude;
+    //QGraphicsPixmapItem *picStation1;
+    //QGraphicsPixmapItem *picStation2;
+    //QGraphicsPixmapItem *picStation3;
+    QGraphicsPixmapItem *picStationResult;
+    QImage pictureStation;
+    QGraphicsTextItem * textWidth;
+    QGraphicsTextItem * textHeight;
+    QGraphicsLineItem *line1,*line2,*line3;
+    int sizeArrayWidth;
+    int sizeArrayHeight;
+    bool setGrid=false;
+
     StationXYPI station1,station2,station3,StationResult;
+
     double coefficient=0.975;
 
 
